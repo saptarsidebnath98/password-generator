@@ -5,69 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        body{
-            background-color: #8594e4;
-        }
-        h1 {
-            color: #8594e4;
-            margin: 0%;
-        }
-        textarea {
-            background-color: #d5def5;
-            width: 80%;
-            border: none;
-            border-radius: 10px;
-        }
-        textarea:focus-visible{
-            border: none;
-        }
-        .container{
-            background-color: #430f58;
-            width: 40vw;
-            height: 30vh;
-            margin-top: 200px;
-            margin-left: 200px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 1px 1px 0.5px black;
-
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            gap: 10px
-        }
-        .passwordBox{
-            width: 60%;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #d5def5;;
-
-        }
-        .passwordBox img{
-            height: 60%;
-            width: 60%;
-            margin-right: 2%;
-            background-color: #d5def5;
-        }
-        .copy{
-            background-color: #d5def5;
-            border: none;
-
-            display: flex;
-            justify-content: end;
-        }
-        .generatePasswordBtn{
-            border-radius: 10px;
-            height: 5vh;
-            width: 60%;
-            background-color: #6643b5;
-            border: none;
-            color: #d5def5;
-
-        }
+        
     </style>
 </head>
 <body>
@@ -76,37 +16,6 @@
         <div class="passwordBox"><textarea class="password" readonly></textarea><button class="copy" onclick="copyPassword()"><img src="copy.png"></button></div>
         <button class="generatePasswordBtn" onclick="generatePassword()">generate password</button>
     </div>
-    <script>
-        const passwordDisplay = document.querySelector(".password");
-        const generatePswdBtn = document.querySelector(".generatePasswordBtn");
-        const passwordLength = 12;
-
-        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const lowercase = "abcdefghijklmnopqrstuvwxyz";
-        const numbers = "0123456789";
-        const symbols = "~!@#$%^&*_+<>?/\=:;";
-        const allChars = uppercase + lowercase + numbers + symbols;
-
-        function generatePassword(){
-            let password = "";
-            password += uppercase[Math.floor(Math.random() * uppercase.length)];
-            password += lowercase[Math.floor(Math.random() * lowercase.length)];
-            password += numbers[Math.floor(Math.random() * numbers.length)];
-            password += symbols[Math.floor(Math.random() * symbols.length)];
-
-            while(passwordLength > password.length){
-                password += allChars[Math.floor(Math.random() * allChars.length)];
-            }
-            
-            passwordDisplay.textContent = password;
-            passwordDisplay.value = password;
-            console.log(passwordDisplay.value);
-        }
-
-        function copyPassword(){
-            passwordDisplay.select()
-            document.execCommand("copy");
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
